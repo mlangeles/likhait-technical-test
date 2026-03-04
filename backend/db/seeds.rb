@@ -147,7 +147,7 @@ while current_date <= end_date
         category: category,
         date: current_date,
         created_at: current_date,
-        updated_at: current_date
+        updated_at: current_date,
       )
 
       expense_count += 1
