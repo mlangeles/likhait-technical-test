@@ -20,7 +20,7 @@ export function ExpenseForm({
   const [categories, setCategories] = useState<string[]>([]);
   const [newCategoryName, setNewCategoryName] = useState("");
   const [isAddingCategory, setIsAddingCategory] = useState(false);
-
+  
   const { formData, errors, isSubmitting, handleChange, handleSubmit } =
     useExpenseForm({ initialData, onSubmit });
 
@@ -131,6 +131,7 @@ export function ExpenseForm({
         label="Date"
         type="date"
         value={formData.date}
+        max={formatDate(new Date())} //Prevents selecting a future date for an expense
         onChange={(e) => handleChange("date", e.target.value)}
         error={errors.date}
         fullWidth

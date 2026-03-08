@@ -49,6 +49,12 @@ export function useExpenseForm({ initialData, onSubmit }: UseExpenseFormProps) {
       newErrors.date = "Date is required";
     }
 
+    // This validation ensures that the user cannot submit an expense with a date in the future
+    const today = formatDate(new Date());
+    if (formData.date > today) {
+      newErrors.date = "Expense date cannot be in the future.";
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
